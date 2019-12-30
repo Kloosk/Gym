@@ -1,5 +1,7 @@
-import React,{useState} from "react";
+import React,{useState,useRef} from "react";
 import styled,{keyframes} from "styled-components";
+import {Link,useHistory} from 'react-router-dom';
+import AlertImg from '../../img/call/rope.jpg'
 
 const Border = keyframes`
   from {
@@ -181,6 +183,7 @@ text-align: center;
   }
 `;
 const SearchMenu = styled.div`
+ text-align: center;
  border: 1px solid #A2D64E;
  position: fixed;
  margin: 0 auto; 
@@ -193,7 +196,7 @@ const SearchMenu = styled.div`
  justify-content: center;
  align-items: center;
  font-size: 2rem;
- padding: 40px 0 5px 0;
+ padding: 40px 0 20px 0;
  cursor: default;
  color: black;
  &::before{
@@ -228,6 +231,7 @@ const SearchMenuLi = styled.li`
   }
 `;
 const Btn = styled.button`
+  margin-top: 20px;
   width: 300px;
   cursor: pointer;
   font-size: 1rem;
@@ -241,7 +245,7 @@ const Btn = styled.button`
   color: #989898;
   transition: box-shadow 0.2s ease-in;
   &:hover{
-  box-shadow: -3px 2px 25px 5px #A2D64E;
+  box-shadow: 0 2px 10px 5px #A2D64E;
   }
 `;
 const CallNow = styled.div`
@@ -347,6 +351,100 @@ const ListIcon = styled.i`
   }
   
 `;
+const Input = styled.input`
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 25px;
+  &:focus{
+    outline: none;
+    border: #A2D64E;
+    box-shadow: 0 0 10px 4px #A2D64E;
+  }
+`;
+const SearchList = styled.div`
+  display: ${props => props.openSearchList ? `block` : `none`};
+`;
+const StyledLink = styled(Link)`
+ color: #333;
+ text-decoration: none;
+`;
+const CallAlert = styled.div` 
+ display: ${props => props.popCall ? 'flex' : 'none'};
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ width: 75vw;
+ height: 55vh;
+ background-color: #A2D64E;
+`;
+const CallTxt = styled.div`
+    padding-top: 20px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+`;
+const CallImg = styled.div`
+    width: 50%;
+    height: 100%;
+    background-image: url(${AlertImg});
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.2s ease-in;
+`;
+const CallExit = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 2px;
+  font-size: 3rem;
+  cursor: pointer;
+  &:hover{
+  transform: scale(1.3);
+  }
+`;
+const CallInput = styled.input`
+  width: 60%;
+  outline: none;
+  margin: 20px 0;
+  padding: 20px 0;
+  max-width: 80%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+`;
+const CallBtn = styled.button`
+width: 45%;
+padding: 15px 30px;
+font-size: 1.2rem;
+font-weight: bold;
+background-color: #EE712F;
+color: #fff;
+border: none;
+border-radius: 10px;
+outline: none;
+cursor: pointer;
+`;
+const CallForm = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+`;
+const CallWarning = styled.p`
+    width: 60%;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+`;
 const Nav = () => {
     const [exit,setExit] = useState(true);
     const handleMenu = () => {
@@ -365,7 +463,40 @@ const Nav = () => {
           setExit(true);
       }
     };
-  return(
+    const handleSearchList = () => {
+        setOpenSearchList(!openSearchList);
+    };
+    const [openSearchList,setOpenSearchList] = useState(false);
+    const handleKeyUp = e => {
+        let value = e.target.value.toUpperCase();
+        let LiElement = SearchRef.current.childNodes;
+        LiElement.forEach(li => {
+            let innerTxt = li.innerText.toUpperCase();
+           if(innerTxt.includes(value)){
+                li.style.display = "";
+           }else{
+               li.style.display = "none";
+           }
+        })
+    };
+    const handleNum = e => {
+        e.preventDefault();
+        let num = e.target.firstChild.value;
+        const re = /^[0-9]{9}$/g;
+        if(re.test(num)){
+            history.push('/');
+            setPopCall(false);
+        }
+        else{
+            e.target.firstChild.style.backgroundColor = '#FFAAAA';
+            e.target.firstChild.style.borderColor = 'red';
+        }
+    };
+    const [popCall,setPopCall] = useState(false);
+    const SearchRef = useRef();
+    const history = useHistory();
+
+    return(
       <div>
           <NavBar exit={exit} onClick={handleMenuExit}>
               <Flex>
@@ -374,17 +505,19 @@ const Nav = () => {
                          <HamInner exit={exit}></HamInner>
                      </HamBox>
                   </Ham>
-                  <Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo>
+                  <StyledLink to="/"><Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo></StyledLink>
                   <Search onClick={handleSearchMenu}>
                       <Icon className="fas fa-search"></Icon>
                       <p>Wybierz miasto/sprawdź grafik</p>
                   </Search>
               </Flex>
               <Flex>
-                    <Profile>
-                        <Icon className="far fa-user"></Icon>
-                        <p>Profil</p>
-                    </Profile>
+                    <StyledLink to={'/login'}>
+                        <Profile>
+                            <Icon className="far fa-user"></Icon>
+                            <p>Profil</p>
+                        </Profile>
+                    </StyledLink>
                     <Lang>
                         <p>PL</p>
                         <Icon className="fas fa-chevron-down"></Icon>
@@ -409,7 +542,7 @@ const Nav = () => {
                       </HamBox>
                   </Ham>
                   <div>
-                      <Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo>
+                      <StyledLink to="/"><Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo></StyledLink>
                   </div>
               </MenuExit>
               <MenuList>
@@ -433,10 +566,12 @@ const Nav = () => {
                   </ListUl>
               </MenuList>
               <FlexMenu>
-                  <Profile>
-                      <Icon className="far fa-user"></Icon>
-                      <p>Profil</p>
-                  </Profile>
+                  <StyledLink to={'/login'}>
+                      <Profile>
+                          <Icon className="far fa-user"></Icon>
+                          <p>Profil</p>
+                      </Profile>
+                  </StyledLink>
                   <Lang>
                       <p>PL</p>
                       <Icon className="fas fa-chevron-down"></Icon>
@@ -448,33 +583,51 @@ const Nav = () => {
                       </LangMenu>
                   </Lang>
               </FlexMenu>
-              <CallNow>
+              <CallNow onClick={() => {setPopCall(true);setExit(!exit);}}>
                   <IconCall className="fas fa-phone-square-alt"></IconCall>
               </CallNow>
           </Menu>
           <SearchMenu openSearchMenu={openSearchMenu}>
               <div>
                   <p>Wybierz miasto</p>
-                  <Btn title="Wybierz klub lub miasto">
+                  <Btn title="Wybierz klub lub miasto" onClick={handleSearchList}>
                       <span>Wybierz klub lub miasto</span>
-                      <Icon className="fas fa-chevron-down"></Icon>
+                      <Icon className="fas fa-chevron-down"></Icon>`
                   </Btn>
               </div>
-              <SearchMenuUl>
-                  <SearchMenuLi>Białystok</SearchMenuLi>
-                  <SearchMenuLi>Bytom</SearchMenuLi>
-                  <SearchMenuLi>Częstochowa</SearchMenuLi>
-                  <SearchMenuLi>Ełk</SearchMenuLi>
-                  <SearchMenuLi>Gdańsk</SearchMenuLi>
-                  <SearchMenuLi>Gdynia</SearchMenuLi>
-                  <SearchMenuLi>Katowice</SearchMenuLi>
-                  <SearchMenuLi>Opole</SearchMenuLi>
-                  <SearchMenuLi>Piła</SearchMenuLi>
-                  <SearchMenuLi>Poznań</SearchMenuLi>
-                  <SearchMenuLi>Suwałki</SearchMenuLi>
-                  <SearchMenuLi>Warszawa</SearchMenuLi>
-              </SearchMenuUl>
+              <SearchList openSearchList={openSearchList}>
+                  <Input type="text" onKeyUp={handleKeyUp} />
+                  <SearchMenuUl ref={SearchRef}>
+                      <SearchMenuLi><StyledLink to="/club/bydgoszcz">Bydgoszcz</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/bytom">Bytom</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/czestochowa">Częstochowa</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/elk">Ełk</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/gdansk">Gdańsk</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/gdynia">Gdynia</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/katowice">Katowice</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/opole">Opole</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/pila">Piła</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/poznan">Poznań</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/suwalki">Suwałki</StyledLink></SearchMenuLi>
+                      <SearchMenuLi><StyledLink to="/club/warszawa">Warszawa</StyledLink></SearchMenuLi>
+                  </SearchMenuUl>
+              </SearchList>
           </SearchMenu>
+          <CallAlert popCall={popCall}>
+              <CallTxt>
+                  <p>Oddzwonimy do Ciebie.</p>
+                  <p>Podaj numer:</p>
+                  <CallForm onSubmit={handleNum}>
+                      <CallInput type="tel"/>
+                      <CallBtn>Umów rozmowę</CallBtn>
+                      <CallWarning>Twój numer telefonu nie będzie wykorzystywany w celach marketingowych lub przekazywany dalej. Tylko oddzwonimy.</CallWarning>
+                  </CallForm>
+              </CallTxt>
+              <CallImg></CallImg>
+              <CallExit onClick={() => {setPopCall(false)}}>
+                  &times;
+              </CallExit>
+          </CallAlert>
       </div>
   )
 };

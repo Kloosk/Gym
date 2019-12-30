@@ -1,13 +1,19 @@
 import React from 'react';
-import Nav from  '../nav/Nav'
+import Home from "../home/Home";
+import Register from "../reg/Register";
+import Login from "../login/Login";
 import styled,{createGlobalStyle} from 'styled-components';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
 const GlobalStyle = createGlobalStyle`
   *{
     margin:0;
     padding:0;
     box-sizing: border-box;
     ::-webkit-scrollbar {
-      width: 30px;
+      width: 20px;
       height: 20px;
     }
     ::-webkit-scrollbar-button {
@@ -46,10 +52,14 @@ const Container = styled.div`
 `;
 function App() {
   return (
-          <Container>
-              <GlobalStyle/>
-              <Nav/>
-          </Container>
+            <Router>
+                <GlobalStyle/>
+                  <Container>
+                     <Route exact path="/" component={Home}/>
+                     <Route path="/login" component={Login}/>
+                     <Route path="/reg" component={Register}/>
+                  </Container>
+            </Router>
   );
 }
 
