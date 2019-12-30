@@ -2,9 +2,13 @@ import React from "react";
 import { useForm } from 'react-hook-form'
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-
-const Container = styled.div`
-  margin: 0 auto;
+import Facebook from "../facebook/Facebook";
+import Logo from "../nav/elements/Logo";
+import Buynow from "../nav/elements/Buynow";
+import Lang from "../nav/elements/Lang";
+import Footer from "../footer/Footer";
+const Container = styled.main`
+  margin: 0 auto 50px auto;
   width: 40vw;
   display: flex;
   flex-direction: column;
@@ -12,7 +16,7 @@ const Container = styled.div`
   
 `;
 const Flex = styled.div`
-  margin-top: 40px;
+  margin: 40px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -81,6 +85,7 @@ const StyledLink = styled(Link)`
   }
 `;
 const P = styled.p`
+  color: grey;
   margin: 40px 0 10px 0;
 `;
 const Icon = styled.i`
@@ -91,6 +96,16 @@ const Error = styled.p`
   padding-top: 3px;
   font-size: 1rem;
 `;
+const Nav = styled.nav`
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  
+`;
+const NavFlex = styled.div`
+  display: flex;
+`;
 const Login = () => {
     const { register, handleSubmit, errors } = useForm();
 
@@ -98,34 +113,44 @@ const Login = () => {
       console.log(data);
     };
     return(
-        <Container>
-            <Flex>
-                <StyledLink to={'/login'}><H1>Logowanie</H1></StyledLink>
-                <StyledLink to={'/reg'}>Rejestracja</StyledLink>
-            </Flex>
-
-            <P>lub</P>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Label>
-                    <Span>E-mail<sup>*</sup></Span>
-                    <Input type="email" name='email' ref={register({required:true})}/>
-                    {errors.password && <Error>Podaj email</Error>}
-                </Label>
-                <Label>
-                    <Span>Hasło<sup>*</sup></Span>
-                    <Input type="password" name='password' ref={register({required:true})}/>
-                    {errors.password && <Error>Podaj hasło</Error>}
-                </Label>
+        <div>
+            <Nav>
+                <Logo/>
+                <NavFlex>
+                    <Lang/>
+                    <Buynow/>
+                </NavFlex>
+            </Nav>
+            <Container>
                 <Flex>
-                    <Remember>
-                        <Icon className="far fa-bell"></Icon>
-                        <p>Przypomnij hasło</p>
-                    </Remember>
-                    <Submit type="submit" value="zaloguj się >"/>
+                    <StyledLink to={'/login'}><H1>Logowanie</H1></StyledLink>
+                    <StyledLink to={'/reg'}>Rejestracja</StyledLink>
                 </Flex>
-            </Form>
-            <Hint>* Dane wymagane</Hint>
-        </Container>
+                <Facebook/>
+                <P>lub</P>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Label>
+                        <Span>E-mail<sup>*</sup></Span>
+                        <Input type="email" name='email' ref={register({required:true})}/>
+                        {errors.password && <Error>Podaj email</Error>}
+                    </Label>
+                    <Label>
+                        <Span>Hasło<sup>*</sup></Span>
+                        <Input type="password" name='password' ref={register({required:true})}/>
+                        {errors.password && <Error>Podaj hasło</Error>}
+                    </Label>
+                    <Flex>
+                        <Remember>
+                            <Icon className="far fa-bell"></Icon>
+                            <p>Przypomnij hasło</p>
+                        </Remember>
+                        <Submit type="submit" value="zaloguj się >"/>
+                    </Flex>
+                </Form>
+                <Hint>* Dane wymagane</Hint>
+            </Container>
+            <Footer/>
+        </div>
     )
 };
 
