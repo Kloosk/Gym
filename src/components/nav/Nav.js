@@ -14,12 +14,13 @@ const Border = keyframes`
   }
 `;
 const NavBar = styled.nav`
+  background-color: #fff;
   z-index: 4;
     position: fixed;
     left: 0;
     top:0;
     width: 100vw;
-   margin: 10px 0;
+   padding: 10px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -445,6 +446,17 @@ const CallWarning = styled.p`
     font-size: 1rem;
     color: #333;
 `;
+const LinkBuy = styled(Link)`
+  cursor: pointer;
+  padding: 2px 0;
+  border: 0;
+  font-size: 1rem;
+  background: #ff6804;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
 const Nav = () => {
     const [exit,setExit] = useState(true);
     const handleMenu = () => {
@@ -528,10 +540,14 @@ const Nav = () => {
                             </Ul>
                         </LangMenu>
                     </Lang>
+
                     <BuyNow>
-                        <p>kup teraz</p>
-                        <Icon className="fas fa-shopping-cart"></Icon>
+                        <LinkBuy to={"/buy"}>
+                            <p>kup teraz</p>
+                            <Icon className="fas fa-shopping-cart"></Icon>
+                        </LinkBuy>
                     </BuyNow>
+
               </Flex>
           </NavBar >
           <Menu exit={exit}>

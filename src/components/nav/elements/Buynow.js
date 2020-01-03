@@ -10,7 +10,6 @@ const BuyNow = styled.button`
   color: #fff;
   display: flex;
   align-items: center;
-
 `;
 const Icon = styled.i`
   color: #A2D64E;

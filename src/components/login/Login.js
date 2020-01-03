@@ -101,10 +101,13 @@ const Nav = styled.nav`
   margin: 20px auto;
   display: flex;
   justify-content: space-between;
-  
 `;
 const NavFlex = styled.div`
   display: flex;
+`;
+const Loginn = styled.div`
+  width: 100vw;
+  overflow-x: hidden;
 `;
 const Login = () => {
     const { register, handleSubmit, errors } = useForm();
@@ -113,7 +116,7 @@ const Login = () => {
       console.log(data);
     };
     return(
-        <div>
+        <Loginn>
             <Nav>
                 <Logo/>
                 <NavFlex>
@@ -132,7 +135,7 @@ const Login = () => {
                     <Label>
                         <Span>E-mail<sup>*</sup></Span>
                         <Input type="email" name='email' ref={register({required:true})}/>
-                        {errors.password && <Error>Podaj email</Error>}
+                        {errors.email && <Error>Podaj email</Error>}
                     </Label>
                     <Label>
                         <Span>Hasło<sup>*</sup></Span>
@@ -150,7 +153,7 @@ const Login = () => {
                 <Hint>* Dane wymagane</Hint>
             </Container>
             <Footer/>
-        </div>
+        </Loginn>
     )
 };
 

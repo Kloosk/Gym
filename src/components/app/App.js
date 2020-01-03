@@ -7,6 +7,9 @@ import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom';
+import Buy from "../buy/Buy";
+import Club from "../club/Club";
+
 const GlobalStyle = createGlobalStyle`
   *{
     margin:0;
@@ -48,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 const Container = styled.div`
-
+    overflow-x: hidden ;
 `;
 function App() {
   return (
@@ -56,8 +59,11 @@ function App() {
                 <GlobalStyle/>
                   <Container>
                      <Route exact path="/" component={Home}/>
+                     <Route path="/club/:id" component={Club}/>
                      <Route path="/login" component={Login}/>
                      <Route path="/reg" component={Register}/>
+                     <Route path="/buy" component={Buy}/>
+
                   </Container>
             </Router>
   );
