@@ -1,5 +1,5 @@
 import React from "react";
-import SearchClub from "../nav/elements/SearchClub";
+import SearchClub from "./SearchClub";
 import styled from "styled-components";
 import Footer from "../footer/Footer";
 import Logo from "../nav/elements/Logo";

@@ -15,7 +15,7 @@ const SlideEach = styled.div`
 `;
 const Element = styled.div`
 width: 100%;
-height: 100vh;
+height: 80vh;
 background-size: cover;
 background-position: top;
 background-repeat: no-repeat;
@@ -34,16 +34,25 @@ opacity: 0.4;
 const Btn = styled.button`
   z-index: 2;
   cursor: pointer;
-  color: #A2D64E;;
-  background-color: #fff;
   position: absolute;
   top: 20%;
   left: 50%;
-  transform: translateX(-50%) skewX(-10deg);
-  padding: 10px 15px;
+  transform: translateX(-50%) skewX(-8deg);
   font-size: 3rem;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #000;
+  padding: 20px 40px;
   &:hover{
-  border: 1px solid #333;
+  border: 1px solid #A2D64E;
+  }
+`;
+const A = styled.a`
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  ${Btn}:hover &{
+   color: #A2D64E;
   }
 `;
 const Slideshow = () =>
@@ -61,17 +70,17 @@ const Slideshow = () =>
             <Slide {...properties}>
                 <SlideEach>
                     <Element style={{'backgroundImage': `url(${slideImages[0]})`}}>
-                        <Btn>NASZE KLUBY</Btn>
+                        <Btn><A href="#clubs">NASZE KLUBY</A></Btn>
                     </Element>
                 </SlideEach>
                 <SlideEach>
                     <Element style={{'backgroundImage': `url(${slideImages[1]})`}}>
-                        <Btn>NASZE KLUBY</Btn>
+                        <Btn><A href="#clubs">NASZE KLUBY</A></Btn>
                     </Element>
                 </SlideEach>
                 <SlideEach >
                     <Element style={{'backgroundImage': `url(${slideImages[2]})`}}>
-                        <Btn><a href="">NASZE KLUBY</a></Btn>
+                        <Btn><A href="#clubs">NASZE KLUBY</A></Btn>
                     </Element>
                 </SlideEach>
             </Slide>

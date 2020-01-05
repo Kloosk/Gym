@@ -102,6 +102,10 @@ const Contact = styled.div`
   font-size: 1.2rem;
   margin-bottom: 40px;
 `;
+const A = styled.a`
+  color: #fff;
+  text-decoration: none;
+`;
 const Footer = () => {
     return(
         <Container>
@@ -140,7 +144,7 @@ const Footer = () => {
                 <SocialIcon className="fab fa-instagram"></SocialIcon>
             </Social>
             <Copyright>
-                Copyright 2020 &copy;
+                Copyright 2020 &copy; KOPIA STRONY <A href="https://www.calypso.com.pl">https://www.calypso.com.pl/</A>
             </Copyright>
         </Container>
     )

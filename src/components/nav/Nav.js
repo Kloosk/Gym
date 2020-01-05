@@ -1,7 +1,8 @@
-import React,{useState,useRef} from "react";
+import React,{useState} from "react";
 import styled,{keyframes} from "styled-components";
 import {Link,useHistory} from 'react-router-dom';
 import AlertImg from '../../img/call/rope.jpg'
+import Search from "./elements/Search";
 
 const Border = keyframes`
   from {
@@ -93,7 +94,7 @@ const LogoSmall = styled.span`
   font-size: 1rem;
   color: #A2D64E;
 `;
-const Search = styled.button`
+const SearchBtn = styled.button`
   display: flex;
   align-items: center;
   padding: 10px;
@@ -181,72 +182,6 @@ text-align: center;
   background-color: white;
   &:hover{
     background-color:#A2D64E;
-  }
-`;
-const SearchMenu = styled.div`
- text-align: center;
- border: 1px solid #A2D64E;
- position: fixed;
- margin: 0 auto; 
- left: 0;
- right: 0;
- top: 14vh;
- width: 80vw;
- display: ${props => props.openSearchMenu ? "flex" : "none"};
- flex-direction: column;
- justify-content: center;
- align-items: center;
- font-size: 2rem;
- padding: 40px 0 20px 0;
- cursor: default;
- color: black;
- &::before{
- content: '';
- position: absolute;
- top: -25px;
- left: 30%;
- width: 50px;
- height: 50px;
- transform: rotate(45deg);
- border: 1px solid #A2D64E;
- border-bottom: none;
- border-right: none;
- background-color: white;
- }
-`;
-const SearchMenuUl = styled.ul`
-  margin-top: 10px;
-  list-style: none;
-  height: 200px;
-  overflow: auto;
-  width: 280px;
-`;
-const SearchMenuLi = styled.li`
-  padding: 5px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.4rem;
-  &:hover{
-  border-bottom: 1px solid #A2D64E;
-  color: #A2D64E;
-  }
-`;
-const Btn = styled.button`
-  margin-top: 20px;
-  width: 300px;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  padding: 10px 14px;
-  border: 1px solid #989898;
-  border-radius: 4px;
-  color: #989898;
-  transition: box-shadow 0.2s ease-in;
-  &:hover{
-  box-shadow: 0 2px 10px 5px #A2D64E;
   }
 `;
 const CallNow = styled.div`
@@ -352,19 +287,6 @@ const ListIcon = styled.i`
   }
   
 `;
-const Input = styled.input`
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px 25px;
-  &:focus{
-    outline: none;
-    border: #A2D64E;
-    box-shadow: 0 0 10px 4px #A2D64E;
-  }
-`;
-const SearchList = styled.div`
-  display: ${props => props.openSearchList ? `block` : `none`};
-`;
 const StyledLink = styled(Link)`
  color: #333;
  text-decoration: none;
@@ -377,6 +299,7 @@ const CallAlert = styled.div`
  transform: translate(-50%,-50%);
  width: 75vw;
  height: 55vh;
+ z-index: 5;
  background-color: #A2D64E;
 `;
 const CallTxt = styled.div`
@@ -462,10 +385,6 @@ const Nav = () => {
     const handleMenu = () => {
       setExit(!exit);
     };
-    const [openSearchMenu,setOpenSearchMenu] = useState(false);
-    const handleSearchMenu = () => {
-        setOpenSearchMenu(!openSearchMenu);
-    };
     const [openMenuList,setOpenMenuList]=useState(false);
     const handleMenuList = () => {
       setOpenMenuList(!openMenuList);
@@ -475,22 +394,10 @@ const Nav = () => {
           setExit(true);
       }
     };
-    const handleSearchList = () => {
-        setOpenSearchList(!openSearchList);
+    const handleSearchMenu = () => {
+        setOpenSearchMenu(!openSearchMenu);
     };
-    const [openSearchList,setOpenSearchList] = useState(false);
-    const handleKeyUp = e => {
-        let value = e.target.value.toUpperCase();
-        let LiElement = SearchRef.current.childNodes;
-        LiElement.forEach(li => {
-            let innerTxt = li.innerText.toUpperCase();
-           if(innerTxt.includes(value)){
-                li.style.display = "";
-           }else{
-               li.style.display = "none";
-           }
-        })
-    };
+    const [openSearchMenu,setOpenSearchMenu] = useState(false);
     const handleNum = e => {
         e.preventDefault();
         let num = e.target.firstChild.value;
@@ -505,7 +412,7 @@ const Nav = () => {
         }
     };
     const [popCall,setPopCall] = useState(false);
-    const SearchRef = useRef();
+
     const history = useHistory();
 
     return(
@@ -518,10 +425,10 @@ const Nav = () => {
                      </HamBox>
                   </Ham>
                   <StyledLink to="/"><Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo></StyledLink>
-                  <Search onClick={handleSearchMenu}>
+                  <SearchBtn onClick={handleSearchMenu}>
                       <Icon className="fas fa-search"></Icon>
                       <p>Wybierz miasto/sprawdź grafik</p>
-                  </Search>
+                  </SearchBtn>
               </Flex>
               <Flex>
                     <StyledLink to={'/login'}>
@@ -603,32 +510,7 @@ const Nav = () => {
                   <IconCall className="fas fa-phone-square-alt"></IconCall>
               </CallNow>
           </Menu>
-          <SearchMenu openSearchMenu={openSearchMenu}>
-              <div>
-                  <p>Wybierz miasto</p>
-                  <Btn title="Wybierz klub lub miasto" onClick={handleSearchList}>
-                      <span>Wybierz klub lub miasto</span>
-                      <Icon className="fas fa-chevron-down"></Icon>`
-                  </Btn>
-              </div>
-              <SearchList openSearchList={openSearchList}>
-                  <Input type="text" onKeyUp={handleKeyUp} />
-                  <SearchMenuUl ref={SearchRef}>
-                      <SearchMenuLi><StyledLink to="/club/bydgoszcz">Bydgoszcz</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/bytom">Bytom</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/czestochowa">Częstochowa</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/elk">Ełk</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/gdansk">Gdańsk</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/gdynia">Gdynia</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/katowice">Katowice</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/opole">Opole</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/pila">Piła</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/poznan">Poznań</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/suwalki">Suwałki</StyledLink></SearchMenuLi>
-                      <SearchMenuLi><StyledLink to="/club/warszawa">Warszawa</StyledLink></SearchMenuLi>
-                  </SearchMenuUl>
-              </SearchList>
-          </SearchMenu>
+          <Search openSearchMenu={openSearchMenu}/>
           <CallAlert popCall={popCall}>
               <CallTxt>
                   <p>Oddzwonimy do Ciebie.</p>

@@ -2,27 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import Slideshow from "../slideshow/Slideshow";
 import mot from '../../img/motivation/mot.jpg'
+import training from '../../img/personal/training.jpg'
+import Maps from "../maps/Maps";
+import Newsletter from "../newsletter/Newsletter";
+import Carousel from "../carousel/Carousel";
 
 const Container = styled.div`
   margin: 0 auto;
   width: 80vw;
 `;
-const Commercial = styled.div`
-  z-index: 3;
-  position: relative;
-  top: -200px;
-  display: flex;
-  justify-content: space-between;
-`;
-const Element = styled.div`
-  margin: 0 10px;
-  width: 500px;
-  height: 400px;
-  background-color: red;
-`;
 const Video = styled.div`
   width: 100%;
   height: 500px;
+`;
+const VideoTitle = styled.h1`
+  font-size: 2.7rem;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: normal;
+  z-index: 4;
+  color: #000;
 `;
 const VideoElement = styled.div`
   background-image: url(${mot});
@@ -45,8 +44,10 @@ const Icon = styled.i`
 const H1 = styled.h1`
   font-size: 2.7rem;
   text-align: center;
-  padding-bottom: 20px;
+  padding: 20px 0;
   font-weight: normal;
+  z-index: 4;
+  color: #fff;
 `;
 const Button = styled.button`
   margin-top: 20px;
@@ -104,7 +105,7 @@ const Side = styled.div`
   text-align: center;
   cursor: pointer;
   transform: translateX(-101%);
-  transition: transform 0.5s ease-in;
+  transition: transform 0.2s ease-in;
   ${FriendlyEl}:hover &{
     transform: translateX(0);
   }
@@ -120,17 +121,86 @@ const IconEl = styled.i`
   font-size: 3rem;
   padding: 20px;
 `;
+const Train = styled.section`
+  z-index: 1;
+  width: 100%;
+  background-image: url(${training});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  padding-bottom: 200px;
+  padding-top: 50px;
+  &::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.2;
+  }
+`;
+const TrainContent = styled.div`
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  align-content: center;
+  grid-gap: 10px;
+  margin-bottom: 100px;
+  padding: 100px 50px 0px 50px;
+`;
+const TrainElement = styled.div`
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+const IconTrain = styled.i`
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 3rem;
+  padding: 20px;
+`;
+const TrainDesc = styled.p`
+  padding: 5px 0;
+  font-size: 1.2rem;
+`;
+const TrainButton = styled.button`
+  z-index: 2;
+  cursor: pointer;
+  padding: 10px 23px;
+  font-size: 1.2rem;
+  background-color: #FF6804;
+  color: #fff;
+  transform: skewX(-10deg);
+  border: none;
+  position: relative;
+  &:hover{
+  top: 1px;
+  }
+`;
+
 const Main = () => {
     return(
      <div>
         <Slideshow/>
         <Container>
-            <Commercial>
-                <Element></Element>
-                <Element></Element>
-            </Commercial>
             <Video>
-                <H1>Zobacz #motywacja</H1>
+                <VideoTitle>Zobacz #motywacja</VideoTitle>
                 <VideoElement>
                     <Icon className="fas fa-play-circle"></Icon>
                 </VideoElement>
@@ -177,7 +247,32 @@ const Main = () => {
                 </Grid>
             </Friendly>
         </Container>
-
+         <Train>
+             <H1>Trening Personalny – spróbuj nowej formy treningu</H1>
+             <TrainContent>
+                 <TrainElement>
+                     <IconTrain className="far fa-heart"></IconTrain>
+                     <TrainDesc>Lorem ipsum dolor</TrainDesc>
+                     <TrainDesc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam beatae in ipsam iure, laborum mollitia nam non nulla quibusdam voluptas? Blanditiis dolor nemo non optio reprehenderit suscipit, ullam?</TrainDesc>
+                 </TrainElement>
+                 <TrainElement>
+                     <IconTrain className="far fa-heart"></IconTrain>
+                     <TrainDesc>Lorem ipsum dolor</TrainDesc>
+                     <TrainDesc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam beatae in ipsam iure, laborum mollitia nam non nulla quibusdam voluptas? Blanditiis dolor nemo non optio reprehenderit suscipit, ullam?</TrainDesc>
+                 </TrainElement>
+                 <TrainElement>
+                     <IconTrain className="far fa-heart"></IconTrain>
+                     <TrainDesc>Lorem ipsum dolor</TrainDesc>
+                     <TrainDesc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquam beatae in ipsam iure, laborum mollitia nam non nulla quibusdam voluptas? Blanditiis dolor nemo non optio reprehenderit suscipit, ullam?</TrainDesc>
+                 </TrainElement>
+             </TrainContent>
+             <TrainButton>sprawdź ofertę ></TrainButton>
+         </Train>
+         <Container>
+            <Maps/>
+            <Newsletter/>
+            <Carousel/>
+         </Container>
      </div>
     )
 };
