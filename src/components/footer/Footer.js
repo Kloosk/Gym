@@ -80,6 +80,9 @@ const SocialIcon = styled.i`
   color:#fff;
   cursor: pointer;
 `;
+const SocialIconFb = styled(SocialIcon)`
+  padding: 20px 23px;
+`;
 const Copyright = styled.p`
   z-index: 1;
   position: absolute;
@@ -140,7 +143,7 @@ const Footer = () => {
             </List>
             <Contact>Fitness Club Telefon 999-999-999</Contact>
             <Social>
-                <SocialIcon className="fab fa-facebook-f"></SocialIcon>
+                <SocialIconFb className="fab fa-facebook-f"></SocialIconFb>
                 <SocialIcon className="fab fa-instagram"></SocialIcon>
             </Social>
             <Copyright>
