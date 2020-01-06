@@ -108,8 +108,6 @@ const Search = (props) => {
         })
     };
     const SearchRef = useRef();
-
-
   return(
       <SearchMenu openSearchMenu={props.openSearchMenu}>
           <div>

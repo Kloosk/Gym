@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import Slideshow from "../slideshow/Slideshow";
 import mot from '../../img/motivation/mot.jpg'
@@ -193,8 +193,59 @@ const TrainButton = styled.button`
   top: 1px;
   }
 `;
-
+const Counting = styled.section`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin-bottom: 100px;
+`;
+const CountBlock = styled.div`
+  &:nth-child(1){
+  background-color: #348329;
+  }
+  &:nth-child(2){
+  background-color: #42A72A;
+  }
+  &:nth-child(3){
+  background-color: #70C82F;
+  }
+  &:nth-child(4){
+  background-color: #A6CF45;
+  }
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3rem;
+`;
 const Main = () => {
+    useEffect(()=>{
+        window.addEventListener('scroll', handleScroll);
+    },[]);
+    const loadRef = useRef();
+    const parentsRef = useRef();
+    const handleScroll = () => {
+        let loadRect = loadRef.current.getBoundingClientRect();
+        if(loadRect.top < window.scrollY){
+            handleClick();
+            window.removeEventListener('scroll',handleScroll,false);
+        }
+    };
+    const handleClick = () => {
+        let num = 0;
+        let inter = setInterval(function (){
+            let element = parentsRef.current.childNodes;
+            num++;
+            element.forEach(block => {
+                block.innerHTML = num + '<div>KLUBÓW</div>';
+            });
+            if(num === 523) {
+                clearInterval(inter);
+
+            }
+        },5);
+    };
     return(
      <div>
         <Slideshow/>
@@ -270,6 +321,12 @@ const Main = () => {
          </Train>
          <Container>
             <Maps/>
+            <Counting ref={parentsRef}>
+                <CountBlock ref={loadRef}>500</CountBlock>
+                <CountBlock>500</CountBlock>
+                <CountBlock>500</CountBlock>
+                <CountBlock>500</CountBlock>
+            </Counting>
             <Newsletter/>
             <Carousel/>
          </Container>
