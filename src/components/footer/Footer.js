@@ -65,6 +65,12 @@ const List = styled.nav`
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap: 5px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  grid-template-columns: repeat(2,1fr);
+  }
+  
 `;
 const Social = styled.div`
   z-index: 1;

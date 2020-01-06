@@ -71,16 +71,34 @@ const Grid = styled.div`
   margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  grid-template-columns: 1fr;
+  }
+  
 `;
 const Left = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 20px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  margin-bottom: 20px;
+  margin-right: 0;
+    }
 `;
 const Right = styled.div`
   display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-gap: 20px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  grid-template-columns: repeat(1,1fr);
+  }
+  
 `;
 const FriendlyEl = styled.div`
 overflow: hidden;
@@ -158,7 +176,12 @@ const TrainContent = styled.div`
   align-content: center;
   grid-gap: 10px;
   margin-bottom: 100px;
-  padding: 100px 50px 0px 50px;
+  padding: 100px 50px 0 50px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  grid-template-columns: repeat(1,1fr);
+  }
 `;
 const TrainElement = styled.div`
   z-index: 2;
@@ -198,6 +221,12 @@ const Counting = styled.section`
   display: grid;
   grid-template-columns: repeat(4,1fr);
   margin-bottom: 100px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  grid-template-columns: repeat(2,1fr);
+  }
+  
 `;
 const CountBlock = styled.div`
   &:nth-child(1){
@@ -257,7 +286,7 @@ const Main = () => {
                 </VideoElement>
             </Video>
             <Friendly>
-                <H1>Fitness najbardziej przyjazną siecią klubów według opinii klientów</H1>
+                <VideoTitle>Fitness najbardziej przyjazną siecią klubów według opinii klientów</VideoTitle>
                 <Grid>
                     <Left>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi at beatae cum distinctio, ducimus enim est et, in iusto magnam maxime modi, molestiae natus numquam possimus quaerat quasi quia reprehenderit similique suscipit tempore temporibus ullam voluptas voluptatem. Consequatur, quos.</p>

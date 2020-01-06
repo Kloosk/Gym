@@ -28,6 +28,11 @@ const Main = styled.main`
   background-color: #fff;
   opacity: 0.5;
   }
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  padding: 0 20px;
+  }
 `;
 const Title = styled.div`
   z-index: 2;
@@ -36,6 +41,12 @@ const Title = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  margin: 40px 0;
+  text-align: center;
+  }
 `;
 const Container = styled.div`
   z-index: 2;
@@ -43,6 +54,12 @@ const Container = styled.div`
   grid-template-columns: repeat(4,1fr);
   justify-items: center;
   grid-gap: 10px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  grid-template-columns: 1fr;
+  margin-bottom: 50px;
+  }
 `;
 const Block = styled.section`
   border: 1px solid;

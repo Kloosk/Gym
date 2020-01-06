@@ -13,6 +13,12 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen 
+      and (min-width: 375px) 
+      and (max-width: 812px) { 
+      width: 90vw;
+      margin: 20px auto;
+           }
   
 `;
 const Flex = styled.div`
@@ -21,6 +27,7 @@ const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 const H1 = styled.h1`
   cursor: pointer;
@@ -101,6 +108,12 @@ const Nav = styled.nav`
   margin: 20px auto;
   display: flex;
   justify-content: space-between;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  width: 100%;
+  margin: 20px 0;
+  }
 `;
 const NavFlex = styled.div`
   display: flex;

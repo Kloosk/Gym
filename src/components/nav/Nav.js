@@ -89,6 +89,11 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   margin: auto 25px;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  font-size: 1.3rem;
+  }
 `;
 const LogoSmall = styled.span`
   font-size: 1rem;
@@ -117,17 +122,26 @@ padding: 10px;
  background-color: transparent;
  border: 0;
  margin: 0;
+ @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  display: none;
+  }
 `;
 const BuyNow = styled.button`
   cursor: pointer;
   border: 0;
-  padding: 0 25px;
+  padding: 10px 25px;
   font-size: 1rem;
   background: #ff6804;
   color: #fff;
   display: flex;
   align-items: center;
-
+    @media only screen 
+      and (min-width: 375px) 
+      and (max-width: 812px){ 
+      padding: 10px;
+      }
 `;
 const Lang = styled.div`
     cursor: pointer;
@@ -137,6 +151,11 @@ const Lang = styled.div`
   align-items: center;
   color: black;
   position: relative;
+  @media only screen 
+ and (min-width: 375px) 
+  and (max-width: 812px){ 
+  display: none;
+  }
   
 `;
 const Menu = styled.div`
@@ -152,6 +171,7 @@ const Menu = styled.div`
 `;
 const Flex = styled.div`
   display: flex;
+  align-items: center;
 `;
 const Icon = styled.i`
   color: #A2D64E;
@@ -301,6 +321,11 @@ const CallAlert = styled.div`
  height: 55vh;
  z-index: 5;
  background-color: #A2D64E;
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  flex-direction: column;
+  }
 `;
 const CallTxt = styled.div`
     padding-top: 20px;
@@ -311,6 +336,12 @@ const CallTxt = styled.div`
     align-items: center;
     color: #fff;
     font-size: 2rem;
+     @media only screen 
+      and (min-width: 375px) 
+      and (max-width: 812px) { 
+      width: 100%;
+      height: 100%;
+      }
 `;
 const CallImg = styled.div`
     width: 50%;
@@ -319,6 +350,12 @@ const CallImg = styled.div`
     background-size: cover;
     background-position: center;
     transition: opacity 0.2s ease-in;
+    @media only screen 
+      and (min-width: 375px) 
+      and (max-width: 812px) { 
+      width: 0;
+      height: 0;
+      }
 `;
 const CallExit = styled.div`
   position: absolute;
@@ -332,6 +369,13 @@ const CallExit = styled.div`
   &:hover{
   transform: scale(1.3);
   }
+  @media only screen 
+      and (min-width: 375px) 
+      and (max-width: 812px) { 
+      top: 0;
+      right: 1px;
+      color: black;
+      }
 `;
 const CallInput = styled.input`
   width: 60%;
@@ -380,6 +424,26 @@ const LinkBuy = styled(Link)`
   align-items: center;
   text-decoration: none;
 `;
+const None = styled.p`
+@media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px){ 
+  display: none;
+  }
+`;
+const ProfileMobile = styled(Profile)`
+  @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  display: flex;
+`;
+const LangMobile = styled(Lang)`
+   @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  display: flex;
+  }
+`;
 const Nav = () => {
     const [exit,setExit] = useState(true);
     const handleMenu = () => {
@@ -427,7 +491,7 @@ const Nav = () => {
                   <StyledLink to="/"><Logo>Gym<sub><LogoSmall>fitness</LogoSmall>Club</sub></Logo></StyledLink>
                   <SearchBtn onClick={handleSearchMenu}>
                       <Icon className="fas fa-search"></Icon>
-                      <p>Wybierz miasto/sprawdź grafik</p>
+                      <None>Wybierz miasto/sprawdź grafik</None>
                   </SearchBtn>
               </Flex>
               <Flex>
@@ -450,7 +514,7 @@ const Nav = () => {
 
                     <BuyNow>
                         <LinkBuy to={"/buy"}>
-                            <p>kup teraz</p>
+                            <None>kup teraz</None>
                             <Icon className="fas fa-shopping-cart"></Icon>
                         </LinkBuy>
                     </BuyNow>
@@ -490,12 +554,12 @@ const Nav = () => {
               </MenuList>
               <FlexMenu>
                   <StyledLink to={'/login'}>
-                      <Profile>
+                      <ProfileMobile>
                           <Icon className="far fa-user"></Icon>
                           <p>Profil</p>
-                      </Profile>
+                      </ProfileMobile>
                   </StyledLink>
-                  <Lang>
+                  <LangMobile>
                       <p>PL</p>
                       <Icon className="fas fa-chevron-down"></Icon>
                       <LangMenu>
@@ -504,7 +568,7 @@ const Nav = () => {
                               <Li>ENGLISH</Li>
                           </Ul>
                       </LangMenu>
-                  </Lang>
+                  </LangMobile>
               </FlexMenu>
               <CallNow onClick={() => {setPopCall(true);setExit(!exit);}}>
                   <IconCall className="fas fa-phone-square-alt"></IconCall>

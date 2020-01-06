@@ -12,6 +12,12 @@ const Nav = styled.nav`
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
+   @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  width: 100%;
+  margin: 20px 0;
+  }
 `;
 const NavFlex = styled.div`
   display: flex;
@@ -23,6 +29,12 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+   @media only screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) { 
+  width: 100vw;
+  margin: 60px 0;
+  }
 `;
 const Title = styled.h1`
 font-size: 2rem;
