@@ -72,8 +72,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) and (max-width: 900px){ 
   grid-template-columns: 1fr;
   }
   
@@ -83,8 +82,7 @@ const Left = styled.div`
   flex-direction: column;
   margin-right: 20px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) and (max-width: 900px){ 
   margin-bottom: 20px;
   margin-right: 0;
     }
@@ -94,8 +92,7 @@ const Right = styled.div`
   grid-template-columns: repeat(3,1fr);
   grid-gap: 20px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) and (max-width: 900px){ 
   grid-template-columns: repeat(1,1fr);
   }
   
@@ -178,8 +175,8 @@ const TrainContent = styled.div`
   margin-bottom: 100px;
   padding: 100px 50px 0 50px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px)
+  and (max-width: 900px){ 
   grid-template-columns: repeat(1,1fr);
   }
 `;
@@ -222,8 +219,8 @@ const Counting = styled.section`
   grid-template-columns: repeat(4,1fr);
   margin-bottom: 100px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) 
+  and (max-width: 900px){ 
   grid-template-columns: repeat(2,1fr);
   }
   
@@ -247,6 +244,12 @@ const CountBlock = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 1.3rem;
+`;
+const H3 = styled.h3`
+font-size: 2rem;
+color: #000;
+margin-top: 180px;
+text-align: center;
 `;
 const Main = () => {
     useEffect(()=>{
@@ -286,7 +289,7 @@ const Main = () => {
                 </VideoElement>
             </Video>
             <Friendly>
-                <VideoTitle>Fitness najbardziej przyjazną siecią klubów według opinii klientów</VideoTitle>
+                <H3>Fitness najbardziej przyjazną siecią klubów według opinii klientów</H3>
                 <Grid>
                     <Left>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi at beatae cum distinctio, ducimus enim est et, in iusto magnam maxime modi, molestiae natus numquam possimus quaerat quasi quia reprehenderit similique suscipit tempore temporibus ullam voluptas voluptatem. Consequatur, quos.</p>

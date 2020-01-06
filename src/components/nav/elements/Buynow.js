@@ -11,8 +11,7 @@ const BuyNow = styled.button`
   display: flex;
   align-items: center;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   padding: 5px;
   margin-right: 40px;
   }
@@ -23,8 +22,7 @@ const Icon = styled.i`
 `;
 const None = styled.p`
 @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   display: none;
   }
 `;

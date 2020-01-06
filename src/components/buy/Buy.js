@@ -29,8 +29,7 @@ const Main = styled.main`
   opacity: 0.5;
   }
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   padding: 0 20px;
   }
 `;
@@ -42,8 +41,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   margin: 40px 0;
   text-align: center;
   }
@@ -55,8 +53,7 @@ const Container = styled.div`
   justify-items: center;
   grid-gap: 10px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   grid-template-columns: 1fr;
   margin-bottom: 50px;
   }
@@ -116,6 +113,11 @@ const Nav = styled.nav`
   margin: 20px auto;
   display: flex;
   justify-content: space-between;
+@media only screen 
+  and (min-width: 200px) and (max-width: 900px) { 
+  width: 100%;
+  margin: 20px auto 0 auto;
+  }
 `;
 const NavFlex = styled.div`
   display: flex;

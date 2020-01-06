@@ -14,8 +14,7 @@ const Container = styled.main`
   flex-direction: column;
   align-items: center;
   @media only screen 
-      and (min-width: 375px) 
-      and (max-width: 812px) { 
+      and(min-width: 200px) and (max-width: 900px) { 
       width: 90vw;
       margin: 20px auto;
            }
@@ -109,8 +108,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   width: 100%;
   margin: 20px 0;
   }

@@ -13,8 +13,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
    @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px){ 
   width: 100%;
   margin: 20px 0;
   }
@@ -30,8 +29,7 @@ const Main = styled.main`
   align-items: center;
   flex-direction: column;
    @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   width: 100vw;
   margin: 60px 0;
   }
@@ -50,7 +48,7 @@ padding: 3px 0;
 font-size: 1.3rem;
 color: #333;
 `;
-const Adress = styled.p`
+const Adress = styled.div`
   font-size: 1.5rem;
   margin-top: 20px;
 `;

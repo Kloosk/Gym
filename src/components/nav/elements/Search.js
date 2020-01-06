@@ -45,7 +45,7 @@ const SearchMenu = styled.div`
  border-bottom: none;
  border-right: none;
  background-color: white;
- }
+
 `;
 const SearchMenuUl = styled.ul`
   margin-top: 10px;
@@ -66,7 +66,7 @@ const SearchMenuLi = styled.li`
 `;
 const Btn = styled.button`
   margin-top: 20px;
-  width: 300px;
+  width: 250px;
   cursor: pointer;
   font-size: 1rem;
   display: flex;
@@ -79,7 +79,7 @@ const Btn = styled.button`
   color: #989898;
   transition: box-shadow 0.2s ease-in;
   &:hover{
-  box-shadow: 0 2px 10px 5px #A2D64E;
+  box-shadow: 0 2px 2px 2px #A2D64E;
   }
 `;
 const StyledLink = styled(Link)`

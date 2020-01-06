@@ -90,8 +90,7 @@ const Logo = styled.h1`
   font-weight: bold;
   margin: auto 25px;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   font-size: 1.3rem;
   }
 `;
@@ -123,8 +122,7 @@ padding: 10px;
  border: 0;
  margin: 0;
  @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) and (max-width: 900px){ 
   display: none;
   }
 `;
@@ -138,8 +136,7 @@ const BuyNow = styled.button`
   display: flex;
   align-items: center;
     @media only screen 
-      and (min-width: 375px) 
-      and (max-width: 812px){ 
+      and (min-width: 200px) and (max-width: 900px){ 
       padding: 10px;
       }
 `;
@@ -152,8 +149,7 @@ const Lang = styled.div`
   color: black;
   position: relative;
   @media only screen 
- and (min-width: 375px) 
-  and (max-width: 812px){ 
+ and (min-width: 200px) and (max-width: 900px){ 
   display: none;
   }
   
@@ -168,6 +164,11 @@ const Menu = styled.div`
   transform: ${props => props.exit ? `translateX(-400px)` : `translateX(0)`};
   transition: transform 0.5s ease-in-out;
   background-color: white;
+   @media only screen 
+  and (min-width: 200px) and (max-width: 900px){ 
+  transform: ${props => props.exit ? `translateX(-100%)` : `translateX(0)`};
+  width: 100%;
+  }
 `;
 const Flex = styled.div`
   display: flex;
@@ -322,9 +323,10 @@ const CallAlert = styled.div`
  z-index: 5;
  background-color: #A2D64E;
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) 
+  and (max-width: 900px) { 
   flex-direction: column;
+  height: auto;
   }
 `;
 const CallTxt = styled.div`
@@ -337,10 +339,9 @@ const CallTxt = styled.div`
     color: #fff;
     font-size: 2rem;
      @media only screen 
-      and (min-width: 375px) 
-      and (max-width: 812px) { 
+      and (min-width: 200px) and (max-width: 900px) { 
       width: 100%;
-      height: 100%;
+      text-align: center;
       }
 `;
 const CallImg = styled.div`
@@ -351,8 +352,7 @@ const CallImg = styled.div`
     background-position: center;
     transition: opacity 0.2s ease-in;
     @media only screen 
-      and (min-width: 375px) 
-      and (max-width: 812px) { 
+      and (min-width: 200px) and (max-width: 900px){ 
       width: 0;
       height: 0;
       }
@@ -370,8 +370,7 @@ const CallExit = styled.div`
   transform: scale(1.3);
   }
   @media only screen 
-      and (min-width: 375px) 
-      and (max-width: 812px) { 
+      and (min-width: 200px) and (max-width: 900px) { 
       top: 0;
       right: 1px;
       color: black;
@@ -398,6 +397,10 @@ border: none;
 border-radius: 10px;
 outline: none;
 cursor: pointer;
+@media only screen 
+      and (min-width: 200px) and (max-width: 900px){ 
+      text-align: center;
+      }
 `;
 const CallForm = styled.form`
   width: 100%;
@@ -426,21 +429,18 @@ const LinkBuy = styled(Link)`
 `;
 const None = styled.p`
 @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px){ 
+  and (min-width: 200px) and (max-width: 900px){ 
   display: none;
   }
 `;
 const ProfileMobile = styled(Profile)`
   @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px){ 
   display: flex;
 `;
 const LangMobile = styled(Lang)`
    @media only screen 
-  and (min-width: 375px) 
-  and (max-width: 812px) { 
+  and (min-width: 200px) and (max-width: 900px) { 
   display: flex;
   }
 `;
