@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.js": "/gym/static/js/main.26138fe5.chunk.js",
+    "main.js.map": "/gym/static/js/main.26138fe5.chunk.js.map",
+    "runtime-main.js": "/gym/static/js/runtime-main.4f11fab4.js",
+    "runtime-main.js.map": "/gym/static/js/runtime-main.4f11fab4.js.map",
+    "static/css/2.e10f3c82.chunk.css": "/gym/static/css/2.e10f3c82.chunk.css",
+    "static/js/2.f6bd5b75.chunk.js": "/gym/static/js/2.f6bd5b75.chunk.js",
+    "static/js/2.f6bd5b75.chunk.js.map": "/gym/static/js/2.f6bd5b75.chunk.js.map",
+    "index.html": "/gym/index.html",
+    "precache-manifest.c00171d613d0794fdd730cfe04b8fa25.js": "/gym/precache-manifest.c00171d613d0794fdd730cfe04b8fa25.js",
+    "service-worker.js": "/gym/service-worker.js",
+    "static/css/2.e10f3c82.chunk.css.map": "/gym/static/css/2.e10f3c82.chunk.css.map",
+    "static/js/2.f6bd5b75.chunk.js.LICENSE": "/gym/static/js/2.f6bd5b75.chunk.js.LICENSE",
+    "static/media/bg.jpg": "/gym/static/media/bg.4ef66709.jpg",
+    "static/media/mot.jpg": "/gym/static/media/mot.560c8934.jpg",
+    "static/media/rope.jpg": "/gym/static/media/rope.b07f3dd6.jpg",
+    "static/media/slick-theme.css": "/gym/static/media/slick.f97e3bbf.svg",
+    "static/media/slider1.jpg": "/gym/static/media/slider1.193a7ebe.jpg",
+    "static/media/slider2.jpg": "/gym/static/media/slider2.e9f6ced5.jpg",
+    "static/media/slider3.jpg": "/gym/static/media/slider3.a160ccd5.jpg",
+    "static/media/training.jpg": "/gym/static/media/training.ddac6375.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f11fab4.js",
+    "static/css/2.e10f3c82.chunk.css",
+    "static/js/2.f6bd5b75.chunk.js",
+    "static/js/main.26138fe5.chunk.js"
+  ]
+}
