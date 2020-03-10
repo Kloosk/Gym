@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.js": "./static/js/main.a0042bb7.chunk.js",
+    "main.js.map": "./static/js/main.a0042bb7.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.6335838a.js",
+    "runtime-main.js.map": "./static/js/runtime-main.6335838a.js.map",
+    "static/css/2.0118536b.chunk.css": "./static/css/2.0118536b.chunk.css",
+    "static/js/2.d15fa0f9.chunk.js": "./static/js/2.d15fa0f9.chunk.js",
+    "static/js/2.d15fa0f9.chunk.js.map": "./static/js/2.d15fa0f9.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.2a153e85fa3c00d2b41b52ce94d114a5.js": "./precache-manifest.2a153e85fa3c00d2b41b52ce94d114a5.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.0118536b.chunk.css.map": "./static/css/2.0118536b.chunk.css.map",
+    "static/js/2.d15fa0f9.chunk.js.LICENSE": "./static/js/2.d15fa0f9.chunk.js.LICENSE",
+    "static/media/bg.jpg": "./static/media/bg.4ef66709.jpg",
+    "static/media/mot.jpg": "./static/media/mot.560c8934.jpg",
+    "static/media/rope.jpg": "./static/media/rope.b07f3dd6.jpg",
+    "static/media/slick-theme.css": "./static/media/slick.f97e3bbf.svg",
+    "static/media/slider1.jpg": "./static/media/slider1.193a7ebe.jpg",
+    "static/media/slider2.jpg": "./static/media/slider2.e9f6ced5.jpg",
+    "static/media/slider3.jpg": "./static/media/slider3.a160ccd5.jpg",
+    "static/media/training.jpg": "./static/media/training.ddac6375.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6335838a.js",
+    "static/css/2.0118536b.chunk.css",
+    "static/js/2.d15fa0f9.chunk.js",
+    "static/js/main.a0042bb7.chunk.js"
+  ]
+}

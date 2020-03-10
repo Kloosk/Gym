@@ -4,7 +4,7 @@ import Register from "../reg/Register";
 import Login from "../login/Login";
 import styled,{createGlobalStyle} from 'styled-components';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route
 } from 'react-router-dom';
 import Buy from "../buy/Buy";
